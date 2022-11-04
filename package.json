@@ -8,7 +8,11 @@
     "dist"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:npm": "tsc",
+    "build:web": "webpack --config webpack.prod.js",
+    "build": "yarn run build:npm && yarn run build:web",
+    "test": "mocha -r ts-node/register test/**/*.test.ts",
+    "publish": "yarn publish"
   },
   "repository": {
     "type": "git",

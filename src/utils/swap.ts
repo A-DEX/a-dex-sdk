@@ -1,10 +1,18 @@
-import { asset, Asset } from "eos-common";
+import { asset, Asset, ExtendedAsset } from "eos-common";
 
 export function countPrice(baseToken: Asset, quoteToken: Asset): Asset {
   const precisionDelta =
     quoteToken.symbol.precision() - baseToken.symbol.precision();
   const y = quoteToken.symbol.precision() - precisionDelta;
   return Asset.times(quoteToken, 10 ** y).div(baseToken.amount);
+}
+
+export function countPrices(
+  baseToken: ExtendedAsset,
+  quoteToken: ExtendedAsset
+): ExtendedAsset {
+  const price = countPrice(baseToken.quantity, quoteToken.quantity);
+  return new ExtendedAsset(price, quoteToken.contract);
 }
 
 export function countTotalFeeAmount(
