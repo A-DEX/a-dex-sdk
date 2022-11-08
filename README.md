@@ -44,7 +44,7 @@ Helper class to construct swap contract actions which can be signed and pushed o
 
 ### SwapTransactionGenerator
 
-Helper class to construct swap transactions which can be signed and pushed on chain.
+Helper class to construct swap contract transactions which can be signed and pushed on chain.
 
 ### Utils
 

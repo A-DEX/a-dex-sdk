@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        adexswap: './src/index.ts',
+        adexsdk: './src/index.ts',
     },
     mode: 'production',
     module: {
