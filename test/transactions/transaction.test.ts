@@ -28,12 +28,6 @@ describe("Transaction Generator Tests", () => {
     expect(trx).to.deep.equal({
       actions: [
         {
-          account: "swap.adex",
-          name: "open",
-          authorization: [{ actor: "tester", permission: "active" }],
-          data: { owner: "tester", symbol: "0,LPA", ram_payer: "tester" },
-        },
-        {
           account: "eosio.token",
           name: "transfer",
           authorization: [{ actor: "tester", permission: "active" }],
@@ -69,18 +63,6 @@ describe("Transaction Generator Tests", () => {
     expect(trx).to.deep.equal({
       actions: [
         {
-          account: "eosio.token",
-          name: "open",
-          authorization: [{ actor: "tester", permission: "active" }],
-          data: { owner: "tester", symbol: "4,EOS", ram_payer: "tester" },
-        },
-        {
-          account: "tethertether",
-          name: "open",
-          authorization: [{ actor: "tester", permission: "active" }],
-          data: { owner: "tester", symbol: "4,USDT", ram_payer: "tester" },
-        },
-        {
           account: "swap.adex",
           name: "withdraw",
           authorization: [{ actor: "tester", permission: "active" }],
@@ -99,12 +81,6 @@ describe("Transaction Generator Tests", () => {
     );
     expect(trx).to.deep.equal({
       actions: [
-        {
-          account: "tethertether",
-          name: "open",
-          authorization: [{ actor: "tester", permission: "active" }],
-          data: { owner: "tester", symbol: "4,USDT", ram_payer: "tester" },
-        },
         {
           account: "eosio.token",
           name: "transfer",
@@ -129,12 +105,6 @@ describe("Transaction Generator Tests", () => {
     );
     expect(trx).to.deep.equal({
       actions: [
-        {
-          account: "tethertether",
-          name: "open",
-          authorization: [{ actor: "tester", permission: "active" }],
-          data: { owner: "tester", symbol: "4,USDT", ram_payer: "tester" },
-        },
         {
           account: "eosio.token",
           name: "transfer",

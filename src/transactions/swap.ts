@@ -19,7 +19,8 @@ export class SwapTransactionGenerator {
     symbol: Sym,
     poolId: number,
     baseToken: ExtendedAsset,
-    quoteToken: ExtendedAsset
+    quoteToken: ExtendedAsset,
+    isBalanceExist: boolean = true
   ): Promise<EosioTransactionObject> {
     const openAction = await this.actGen.open(
       this.auth,
@@ -44,16 +45,21 @@ export class SwapTransactionGenerator {
       quoteToken.quantity.to_string(),
       `deposit:${poolId}`
     );
-    return this._pack(
-      openAction.concat(baseTransferAction, quoteTransferAction)
-    );
+    if (isBalanceExist) {
+      return this._pack(baseTransferAction.concat(quoteTransferAction));
+    } else {
+      return this._pack(
+        openAction.concat(baseTransferAction, quoteTransferAction)
+      );
+    }
   }
 
   async removeLiquidity(
     owner: Name,
     quantity: Asset,
     baseToken: ExtendedSymbol,
-    quoteToken: ExtendedSymbol
+    quoteToken: ExtendedSymbol,
+    isBalancesExist: boolean = true
   ): Promise<EosioTransactionObject> {
     const baseOpenAction = await this.actGen.open(
       this.auth,
@@ -74,14 +80,19 @@ export class SwapTransactionGenerator {
       owner.to_string(),
       quantity.to_string()
     );
-    return this._pack(baseOpenAction.concat(quoteOpenAction, withdrawAction));
+    if (isBalancesExist) {
+      return this._pack(withdrawAction);
+    } else {
+      return this._pack(baseOpenAction.concat(quoteOpenAction, withdrawAction));
+    }
   }
 
   async swapWithMinReceived(
     from: Name,
     amountFrom: ExtendedAsset,
     amountTo: ExtendedAsset,
-    route: string
+    route: string,
+    isBalanceExist: boolean = true
   ): Promise<EosioTransactionObject> {
     const openAction = await this.actGen.open(
       this.auth,
@@ -98,14 +109,19 @@ export class SwapTransactionGenerator {
       amountFrom.quantity.to_string(),
       `swap:${route};min:${amountTo.quantity.amount}`
     );
-    return this._pack(openAction.concat(transferAction));
+    if (isBalanceExist) {
+      return this._pack(transferAction);
+    } else {
+      return this._pack(openAction.concat(transferAction));
+    }
   }
 
   async swapByMarketPrice(
     from: Name,
     amountFrom: ExtendedAsset,
     amountTo: ExtendedAsset,
-    route: string
+    route: string,
+    isBalanceExist: boolean = true
   ): Promise<EosioTransactionObject> {
     const openAction = await this.actGen.open(
       this.auth,
@@ -122,7 +138,11 @@ export class SwapTransactionGenerator {
       amountFrom.quantity.to_string(),
       `swap:${route}`
     );
-    return this._pack(openAction.concat(transferAction));
+    if (isBalanceExist) {
+      return this._pack(transferAction);
+    } else {
+      return this._pack(openAction.concat(transferAction));
+    }
   }
 
   protected _pack(acts: EosioActionObject[]): EosioTransactionObject {
