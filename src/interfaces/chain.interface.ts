@@ -9,7 +9,7 @@ export interface GetCurrencyBalance {
   symbol?: string;
 }
 
-export interface GetTableRowsPayload {
+export interface GetTableRows {
   json: boolean;
   code: string;
   scope: string;

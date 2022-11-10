@@ -32,11 +32,11 @@ import { SwapActionGenerator, SwapTransactionGenerator, ChainApi, RpcApi } from 
 
 ### ChainApi
 
-Uses only native nodeos calls to chain api plugin.
+Chain API client.
 
 ### RpcApi
 
-Use A-DEX RPC API.
+A-DEX RPC API client.
 
 ### SwapActionGenerator
 

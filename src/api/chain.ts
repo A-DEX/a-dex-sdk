@@ -1,7 +1,7 @@
 import {
   GetCurrencyStats,
   GetCurrencyBalance,
-  GetTableRowsPayload,
+  GetTableRows,
   PoolPayload,
 } from "../interfaces";
 
@@ -32,7 +32,7 @@ export default class ChainApi {
     });
   }
 
-  async getTableRows(payload: GetTableRowsPayload): Promise<any> {
+  async getTableRows(payload: GetTableRows): Promise<any> {
     return await this.fetch(`${this.nodeosUrl}/v1/chain/get_table_rows`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
