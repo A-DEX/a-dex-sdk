@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import { Asset, ExtendedAsset, Name } from "eos-common";
-import { countPrice, countTotal } from "../../src/utils";
+import { countChange, countPrice, countTotal } from "../../src/utils";
 
 describe("Math Utils Tests", () => {
   it("Count EOS-USDT Price Test", async () => {
@@ -102,5 +102,53 @@ describe("Math Utils Tests", () => {
       new ExtendedAsset(new Asset("20000.0000 USDT"), new Name("tethertether"))
     );
     expect(total.toString()).to.deep.equal("20000.0000 USDT@tethertether");
+  }).timeout(2000);
+
+  it("Count zero change Test", async () => {
+    const change = countChange(
+      new Asset("1.0000 EOS"),
+      new Asset("1.0000 EOS")
+    );
+    expect(change).to.deep.equal("0.00");
+  }).timeout(2000);
+
+  it("Count zero change ExtendedAsset Test", async () => {
+    const change = countChange(
+      new ExtendedAsset(new Asset("1.0000 EOS"), new Name("eosio.token")),
+      new ExtendedAsset(new Asset("1.0000 EOS"), new Name("eosio.token"))
+    );
+    expect(change).to.deep.equal("0.00");
+  }).timeout(2000);
+
+  it("Count positive change Test", async () => {
+    const change = countChange(
+      new Asset("1.0000 EOS"),
+      new Asset("1.5000 EOS")
+    );
+    expect(change).to.deep.equal("50.00");
+  }).timeout(2000);
+
+  it("Count positive change ExtendedAsset Test", async () => {
+    const change = countChange(
+      new ExtendedAsset(new Asset("1.0000 EOS"), new Name("eosio.token")),
+      new ExtendedAsset(new Asset("1.5000 EOS"), new Name("eosio.token"))
+    );
+    expect(change).to.deep.equal("50.00");
+  }).timeout(2000);
+
+  it("Count negative change Test", async () => {
+    const change = countChange(
+      new Asset("1.0000 EOS"),
+      new Asset("0.5000 EOS")
+    );
+    expect(change).to.deep.equal("-50.00");
+  }).timeout(2000);
+
+  it("Count negative change ExtendedAsset Test", async () => {
+    const change = countChange(
+      new ExtendedAsset(new Asset("1.0000 EOS"), new Name("eosio.token")),
+      new ExtendedAsset(new Asset("0.5000 EOS"), new Name("eosio.token"))
+    );
+    expect(change).to.deep.equal("-50.00");
   }).timeout(2000);
 });

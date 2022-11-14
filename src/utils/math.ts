@@ -53,3 +53,39 @@ export function countTotal(amount: unknown, price: unknown): unknown {
     throw new Error("Failed countTotal");
   }
 }
+
+export function countChange(
+  oldValue: Asset,
+  newValue: Asset,
+  digits?: number | undefined
+): string;
+export function countChange(
+  oldValue: ExtendedAsset,
+  newValue: ExtendedAsset,
+  digits?: number | undefined
+): string;
+
+export function countChange(
+  oldValue: unknown,
+  newValue: unknown,
+  digits: number | undefined = 2
+): string {
+  if (oldValue instanceof Asset && newValue instanceof Asset) {
+    const change =
+      (Number(Asset.minus(newValue, oldValue).amount) /
+        Number(oldValue.amount)) *
+      100;
+    return change.toFixed(digits);
+  } else if (
+    oldValue instanceof ExtendedAsset &&
+    newValue instanceof ExtendedAsset
+  ) {
+    const change =
+      (Number(ExtendedAsset.minus(newValue, oldValue).quantity.amount) /
+        Number(oldValue.quantity.amount)) *
+      100;
+    return change.toFixed(digits);
+  } else {
+    throw new Error("Failed countChange");
+  }
+}
