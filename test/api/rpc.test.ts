@@ -26,4 +26,44 @@ describe("Rpc Api Tests", () => {
     const res = await api.getActions();
     expect(res).to.be.a("object");
   }).timeout(20000);
+
+  it("Get Global Volume Chart Test", async () => {
+    const res = await api.getGlobalVolumeChart();
+    expect(res).to.be.a("object");
+  }).timeout(20000);
+
+  it("Get Global Liquidity Chart Test", async () => {
+    const res = await api.getGlobalLiquidityChart();
+    expect(res).to.be.a("object");
+  }).timeout(20000);
+
+  it("Get Global Transactions Chart Test", async () => {
+    const res = await api.getGlobalTransactionsChart();
+    expect(res).to.be.a("object");
+  }).timeout(20000);
+
+  it("Get Pools Volume Chart Test", async () => {
+    const res = await api.getPoolsVolumeChart();
+    expect(res).to.be.a("object");
+  }).timeout(20000);
+
+  it("Get Pools Liquidity Chart Test", async () => {
+    const res = await api.getPoolsLiquidityChart();
+    expect(res).to.be.a("object");
+  }).timeout(20000);
+
+  it("Get Pools Price Chart Test", async () => {
+    const res = await api.getPoolsPriceChart();
+    expect(res).to.be.a("object");
+  }).timeout(20000);
+
+  it("Get Pools Transactions Chart Test", async () => {
+    const res = await api.getPoolsTransactionsChart();
+    expect(res).to.be.a("object");
+  }).timeout(20000);
+
+  it("Get Actions Test", async () => {
+    const res = await api.getActions();
+    expect(res).to.be.a("object");
+  }).timeout(20000);
 });

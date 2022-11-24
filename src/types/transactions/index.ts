@@ -1,4 +1,4 @@
-import { EosioActionObject } from "./index";
+import { EosioActionObject } from "../index";
 
 export type ResourcePayer = {
   payer: string;

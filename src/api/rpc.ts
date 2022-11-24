@@ -5,6 +5,10 @@ import {
   GetGlobalVolumeParams,
   GetGlobalLiquidityParams,
   GetGlobalTransactionsParams,
+  GetPoolsVolumeParams,
+  GetPoolsLiquidityParams,
+  GetPoolsPriceParams,
+  GetPoolsTransactionsParams,
   GetActionsParams,
 } from "../interfaces";
 import {
@@ -14,6 +18,10 @@ import {
   GetGlobalVolumeChart,
   GetGlobalLiquidityChart,
   GetGlobalTransactionsChart,
+  GetPoolsVolumeChart,
+  GetPoolsLiquidityChart,
+  GetPoolsPriceChart,
+  GetPoolsTransactionsChart,
   GetActions,
 } from "../types";
 
@@ -68,21 +76,49 @@ export default class RpcApi {
 
   async getGlobalVolumeChart(params?: GetGlobalVolumeParams) {
     return await this.get<GetGlobalVolumeChart>(
-      "/analytics/v1/chart/volume",
+      "/analytics/v1/charts/global/volume",
       params
     );
   }
 
   async getGlobalLiquidityChart(params?: GetGlobalLiquidityParams) {
     return await this.get<GetGlobalLiquidityChart>(
-      "/analytics/v1/chart/liquidity",
+      "/analytics/v1/charts/global/liquidity",
       params
     );
   }
 
   async getGlobalTransactionsChart(params?: GetGlobalTransactionsParams) {
     return await this.get<GetGlobalTransactionsChart>(
-      "/analytics/v1/chart/transactions",
+      "/analytics/v1/charts/global/transactions",
+      params
+    );
+  }
+
+  async getPoolsVolumeChart(params?: GetPoolsVolumeParams) {
+    return await this.get<GetPoolsVolumeChart>(
+      "/analytics/v1/charts/pools/volume",
+      params
+    );
+  }
+
+  async getPoolsLiquidityChart(params?: GetPoolsLiquidityParams) {
+    return await this.get<GetPoolsLiquidityChart>(
+      "/analytics/v1/charts/pools/liquidity",
+      params
+    );
+  }
+
+  async getPoolsPriceChart(params?: GetPoolsPriceParams) {
+    return await this.get<GetPoolsPriceChart>(
+      "/analytics/v1/charts/pools/price",
+      params
+    );
+  }
+
+  async getPoolsTransactionsChart(params?: GetPoolsTransactionsParams) {
+    return await this.get<GetPoolsTransactionsChart>(
+      "/analytics/v1/charts/pools/transactions",
       params
     );
   }

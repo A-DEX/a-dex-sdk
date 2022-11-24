@@ -1,3 +1,3 @@
-export * from "./action";
-export * from "./transaction";
-export * from "./rpc";
+export * from "./actions";
+export * from "./transactions";
+export * from "./api";

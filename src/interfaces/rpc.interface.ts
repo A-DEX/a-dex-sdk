@@ -32,3 +32,19 @@ export interface GetActionsParams extends HistoryParams {
   notified?: string;
   name?: string;
 }
+
+export interface GetPoolsVolumeParams extends HistoryParams {
+  pool_sha256?: string;
+}
+
+export interface GetPoolsLiquidityParams extends HistoryParams {
+  pool_sha256?: string;
+}
+
+export interface GetPoolsPriceParams extends HistoryParams {
+  pool_sha256?: string;
+}
+
+export interface GetPoolsTransactionsParams extends HistoryParams {
+  pool_sha256?: string;
+}
