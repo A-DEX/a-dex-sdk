@@ -5,7 +5,7 @@ import RpcApi from "../../src/api/rpc";
 // tslint:disable-next-line:no-var-requires
 
 describe("Rpc Api Tests", () => {
-  const api = new RpcApi("http://localhost:8080/api", fetch);
+  const api = new RpcApi("https://jungle3.a-dex.io/api", fetch);
 
   it("Get Pools Test", async () => {
     const res = await api.getPools();
