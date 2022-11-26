@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import fetch from "node-fetch";
-import RpcApi from "../../src/api/rpc";
+import { RpcApi } from "../../src/api";
 
 // tslint:disable-next-line:no-var-requires
 

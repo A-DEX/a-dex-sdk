@@ -27,7 +27,7 @@ import {
 
 import { parseQueryParams } from "../utils";
 
-export default class RpcApi {
+export class RpcApi {
   readonly baseUrl: string;
   readonly fetch: any;
 

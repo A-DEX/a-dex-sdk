@@ -5,7 +5,7 @@ import {
   PoolPayload,
 } from "../interfaces";
 
-export default class ChainApi {
+export class ChainApi {
   readonly nodeosUrl: string;
   readonly swapContract: string;
   readonly fetch: any;

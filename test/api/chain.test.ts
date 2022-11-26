@@ -5,7 +5,7 @@ import {
   GetCurrencyBalance,
   PoolPayload,
 } from "../../src/interfaces";
-import ChainApi from "../../src/api/chain";
+import { ChainApi } from "../../src/api";
 
 // tslint:disable-next-line:no-var-requires
 
