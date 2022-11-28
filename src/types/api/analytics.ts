@@ -20,9 +20,7 @@ export type GetGlobalTransactionsChart = {
 export type GetPoolsVolumeChart = {
   timestamp: string;
   sha256: string;
-  total_volume: string;
-  base_volume: string;
-  quote_volume: string;
+  value: string;
 };
 
 export type GetPoolsLiquidityChart = {
