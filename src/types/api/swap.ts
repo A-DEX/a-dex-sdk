@@ -4,22 +4,22 @@ export type Pool = {
   sha256: string;
   base_token: string;
   base_token_quantity: string;
-  base_token_precision: 0;
+  base_token_precision: number;
   base_token_symbol_code: string;
   base_token_amount: string;
   base_token_contract: string;
   quote_token: string;
   quote_token_quantity: string;
-  quote_token_precision: 0;
+  quote_token_precision: number;
   quote_token_symbol_code: string;
   quote_token_amount: string;
   quote_token_contract: string;
   pool_fee: string;
-  pool_fee_precision: 0;
+  pool_fee_precision: number;
   pool_fee_symbol_code: string;
   pool_fee_amount: string;
   platform_fee: string;
-  platfrom_fee_precision: 0;
+  platfrom_fee_precision: number;
   platfrom_fee_symbol_code: string;
   platfrom_fee_amount: string;
   create_time: string;
@@ -51,6 +51,7 @@ export type GetStats = {
 export type Liquidity = {
   id: string;
   code: string;
+  sha256: string;
   ratio: string;
   current_liquidity: {
     base_token_precision: number;
