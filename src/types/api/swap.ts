@@ -13,9 +13,9 @@ export type Pool = {
   pool_fee_precision: number;
   pool_fee_symbol_code: string;
   pool_fee_amount: string;
-  platfrom_fee_precision: number;
-  platfrom_fee_symbol_code: string;
-  platfrom_fee_amount: string;
+  platform_fee_precision: number;
+  platform_fee_symbol_code: string;
+  platform_fee_amount: string;
   create_time: string;
   last_update_time: string;
 };
