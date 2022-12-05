@@ -16,8 +16,8 @@ export type Pool = {
   platform_fee_precision: number;
   platform_fee_symbol_code: string;
   platform_fee_amount: string;
-  create_time: string;
-  last_update_time: string;
+  created_at: string;
+  updated_at: string;
 };
 
 export type GetPools = {

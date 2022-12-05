@@ -1,11 +1,15 @@
 export type GetGlobalVolumeChart = {
   timestamp: string;
-  value: string;
+  precision: number;
+  symbol_code: string;
+  amount: string;
 };
 
 export type GetGlobalLiquidityChart = {
   timestamp: string;
-  value: string;
+  precision: number;
+  symbol_code: string;
+  amount: string;
 };
 
 export type GetGlobalTransactionsChart = {
@@ -20,19 +24,25 @@ export type GetGlobalTransactionsChart = {
 export type GetPoolsVolumeChart = {
   timestamp: string;
   sha256: string;
-  value: string;
+  precision: number;
+  symbol_code: string;
+  amount: string;
 };
 
 export type GetPoolsLiquidityChart = {
   timestamp: string;
   sha256: string;
-  value: string;
+  precision: number;
+  symbol_code: string;
+  amount: string;
 };
 
 export type GetPoolsPriceChart = {
   timestamp: string;
   sha256: string;
-  value: string;
+  precision: number;
+  symbol_code: string;
+  amount: string;
 };
 
 export type GetPoolsTransactionsChart = {
