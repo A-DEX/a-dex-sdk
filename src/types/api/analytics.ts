@@ -1,4 +1,16 @@
+export type GlobalVolumeChart = {
+  timestamp: string;
+  precision: number;
+  symbol_code: string;
+  amount: string;
+};
+
 export type GetGlobalVolumeChart = {
+  success: boolean;
+  data: GlobalVolumeChart[];
+};
+
+export type GlobalLiquidityChart = {
   timestamp: string;
   precision: number;
   symbol_code: string;
@@ -6,13 +18,11 @@ export type GetGlobalVolumeChart = {
 };
 
 export type GetGlobalLiquidityChart = {
-  timestamp: string;
-  precision: number;
-  symbol_code: string;
-  amount: string;
+  success: boolean;
+  data: GlobalLiquidityChart[];
 };
 
-export type GetGlobalTransactionsChart = {
+export type GlobalTransactionsChart = {
   timestamp: string;
   total: string;
   swap: string;
@@ -21,7 +31,25 @@ export type GetGlobalTransactionsChart = {
   transfer: string;
 };
 
+export type GetGlobalTransactionsChart = {
+  success: boolean;
+  data: GlobalTransactionsChart[];
+};
+
+export type PoolsVolumeChart = {
+  timestamp: string;
+  sha256: string;
+  precision: number;
+  symbol_code: string;
+  amount: string;
+};
+
 export type GetPoolsVolumeChart = {
+  success: boolean;
+  data: PoolsVolumeChart[];
+};
+
+export type PoolsLiquidityChart = {
   timestamp: string;
   sha256: string;
   precision: number;
@@ -30,6 +58,11 @@ export type GetPoolsVolumeChart = {
 };
 
 export type GetPoolsLiquidityChart = {
+  success: boolean;
+  data: PoolsLiquidityChart[];
+};
+
+export type PoolsPriceChart = {
   timestamp: string;
   sha256: string;
   precision: number;
@@ -38,14 +71,11 @@ export type GetPoolsLiquidityChart = {
 };
 
 export type GetPoolsPriceChart = {
-  timestamp: string;
-  sha256: string;
-  precision: number;
-  symbol_code: string;
-  amount: string;
+  success: boolean;
+  data: PoolsPriceChart[];
 };
 
-export type GetPoolsTransactionsChart = {
+export type PoolsTransactionsChart = {
   timestamp: string;
   sha256: string;
   total: string;
@@ -53,6 +83,11 @@ export type GetPoolsTransactionsChart = {
   added: string;
   removed: string;
   transfer: string;
+};
+
+export type GetPoolsTransactionsChart = {
+  success: boolean;
+  data: PoolsTransactionsChart[];
 };
 
 export type TransferData = {
