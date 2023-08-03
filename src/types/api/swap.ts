@@ -25,7 +25,7 @@ export type GetPools = {
   data: Pool[];
 };
 
-export type Stats = {
+export type Stat = {
   supply_precision: number;
   supply_symbol_code: string;
   supply_amount: string;
@@ -35,9 +35,9 @@ export type Stats = {
   issuer: string;
 };
 
-export type GetStats = {
+export type GetStat = {
   success: boolean;
-  data: Stats[];
+  data: Stat[];
 };
 
 export type Liquidity = {

@@ -11,14 +11,14 @@ import { ChainApi } from "../../src/api";
 
 describe("Chain Api Tests", () => {
   const api = new ChainApi(
-    "https://jungle3.cryptolions.io",
-    "swaptokentst",
+    "https://telos-testnet.a-dex.xyz",
+    "swap.dex",
     fetch
   );
 
   it("Get Currency Stats Test", async () => {
     const res = await api.getCurrencyStats({
-      code: "swaptokentst",
+      code: "swap.adex",
       symbol: "LPA",
     });
     const json = await res.json();
@@ -27,7 +27,7 @@ describe("Chain Api Tests", () => {
 
   it("Get Currency Balance Test", async () => {
     const res = await api.getCurrencyBalance({
-      code: "swaptokentst",
+      code: "swap.adex",
       account: "testerjungl3",
       symbol: "LPA",
     });

@@ -13,7 +13,7 @@ import {
 } from "../interfaces";
 import {
   GetPools,
-  GetStats,
+  GetStat,
   GetLiquidityByAccount,
   GetGlobalVolumeChart,
   GetGlobalLiquidityChart,
@@ -61,7 +61,7 @@ export class RpcApi {
   }
 
   async getStats(params?: GetStatsParams) {
-    return await this.get<GetStats>("/swap/v1/stats", params);
+    return await this.get<GetStat>("/swap/v1/stats", params);
   }
 
   async getLiquidityByAccount(

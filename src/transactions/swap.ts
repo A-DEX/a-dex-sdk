@@ -145,7 +145,7 @@ export class SwapTransactionGenerator {
     }
   }
 
-  protected _pack(acts: EosioActionObject[]): EosioTransactionObject {
+  protected _pack(acts: EosioActionObject<any>[]): EosioTransactionObject {
     return { actions: acts };
   }
 }
