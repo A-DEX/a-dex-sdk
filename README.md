@@ -22,10 +22,20 @@ Web library can be found in the [dist] folder
 
 ```javascript
 // standard import
-const { SwapActionGenerator, SwapTransactionGenerator, ChainApi, RpcApi } = require("@a-dex/a-dex-sdk");
+const {
+  SwapActionGenerator,
+  SwapTransactionGenerator,
+  ChainApi,
+  RpcApi,
+} = require("@a-dex/a-dex-sdk");
 
 // ES6 import
-import { SwapActionGenerator, SwapTransactionGenerator, ChainApi, RpcApi } from "@a-dex/a-dex-sdk";
+import {
+  SwapActionGenerator,
+  SwapTransactionGenerator,
+  ChainApi,
+  RpcApi,
+} from "@a-dex/a-dex-sdk";
 ```
 
 ## Documentation

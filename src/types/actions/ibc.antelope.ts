@@ -97,7 +97,7 @@ export namespace IBCBridge {
 
   export type SBlockHeader = {
     header: BlockHeader;
-    producer_signatures: ;
+    producer_signatures: string;
     previous_bmroot: string;
     bmproofpath: Uint16Array;
   }

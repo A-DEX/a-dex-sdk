@@ -1,10 +1,10 @@
 import { Name, Asset, ExtendedAsset, Sym, ExtendedSymbol } from "eos-common";
-import { SwapActionGenerator } from "../actions";
+import { SwapActionGenerator } from "../../actions";
 import {
   EosioAuthorizationObject,
   EosioActionObject,
   EosioTransactionObject,
-} from "../types";
+} from "../../types";
 
 /* tslint:disable:variable-name */
 

@@ -1,3 +1,3 @@
-export * from "./swap";
 export * from "./eosio.token"
-// export * from "./ibc";
+// export * from "./ibc.antelope";
+export * from "./swap.adex";
