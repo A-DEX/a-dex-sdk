@@ -174,4 +174,42 @@ describe("Action Generator Tests", () => {
       },
     ]);
   }).timeout(2000);
+
+  it("Deposit Action Object", async () => {
+    const act = await actionsGen.deposit(
+      auth,
+      "tester",
+      "1"
+    );
+    expect(act).to.deep.equal([
+      {
+        account: "swap.adex",
+        name: "deposit",
+        authorization: [{ actor: "tester", permission: "active" }],
+        data: {
+          owner: 'tester',
+          pool_id: '1',
+        },
+      },
+    ]);
+  }).timeout(2000);
+
+  it("Refund Action Object", async () => {
+    const act = await actionsGen.refund(
+      auth,
+      "tester",
+      "1"
+    );
+    expect(act).to.deep.equal([
+      {
+        account: "swap.adex",
+        name: "refund",
+        authorization: [{ actor: "tester", permission: "active" }],
+        data: {
+          owner: 'tester',
+          pool_id: '1',
+        },
+      },
+    ]);
+  }).timeout(2000);
 });

@@ -1,4 +1,7 @@
-export type EosioAuthorizationObject = { actor: string; permission: string };
+export type EosioAuthorizationObject = {
+  actor: string;
+  permission: string;
+};
 
 export type EosioActionObject<DataType> = {
   account: string;

@@ -59,6 +59,27 @@ export namespace AdexSwap {
     quote_token: string;
   };
 
+  export type OpenDepositActionData = {
+    owner: string;
+    pool_id: string;
+    ram_payer: string;
+  };
+
+  export type CloseDepositActionData = {
+    owner: string;
+    pool_id: string;
+  };
+
+  export type DepositActionData = {
+    owner: string;
+    pool_id: string;
+  };
+
+  export type RefundActionData = {
+    owner: string;
+    pool_id: string;
+  };
+
   export type SwapLogActionData = {
     pool_id: string;
     owner: string;
@@ -84,7 +105,10 @@ export namespace AdexSwap {
     quote_token: ExtendedAsset;
   };
 
-  export type AuthorizationObject = { actor: string; permission: string };
+  export type AuthorizationObject = {
+    actor: string;
+    permission: string;
+  };
 
   export type ActionObject = {
     account: string;
@@ -99,6 +123,10 @@ export namespace AdexSwap {
       | RetireActionData
       | TransferActionData
       | CreatePoolActionData
-      | RemovePoolActionData;
+      | RemovePoolActionData
+      | OpenDepositActionData
+      | CloseDepositActionData
+      | DepositActionData
+      | RefundActionData;
   };
 }

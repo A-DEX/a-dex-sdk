@@ -29,6 +29,14 @@ export class SwapTransactionGenerator {
       symbol.toString(),
       owner.to_string()
     );
+
+    const openDepositAction = await this.actGen.openDeposit(
+      this.auth,
+      owner.to_string(),
+      poolId.toString(),
+      owner.to_string()
+    );
+
     const baseTransferAction = await this.actGen.transfer(
       this.auth,
       baseToken.contract.to_string(),
@@ -37,6 +45,7 @@ export class SwapTransactionGenerator {
       baseToken.quantity.to_string(),
       `deposit:${poolId}`
     );
+
     const quoteTransferAction = await this.actGen.transfer(
       this.auth,
       quoteToken.contract.to_string(),
@@ -45,11 +54,25 @@ export class SwapTransactionGenerator {
       quoteToken.quantity.to_string(),
       `deposit:${poolId}`
     );
+
+    const depositAction = await this.actGen.deposit(
+      this.auth,
+      owner.to_string(),
+      poolId.toString()
+    );
+
     if (isBalanceExist) {
-      return this._pack(baseTransferAction.concat(quoteTransferAction));
+      return this._pack(
+        openDepositAction.concat(baseTransferAction, quoteTransferAction, depositAction)
+      );
     } else {
       return this._pack(
-        openAction.concat(baseTransferAction, quoteTransferAction)
+        openAction.concat(
+          openDepositAction,
+          baseTransferAction,
+          quoteTransferAction,
+          depositAction
+        )
       );
     }
   }
