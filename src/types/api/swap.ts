@@ -23,6 +23,10 @@ export type Pool = {
 export type GetPools = {
   success: boolean;
   data: Pool[];
+  pagination: {
+    count: string;
+    total: string;
+  };
 };
 
 export type Stat = {
@@ -38,6 +42,10 @@ export type Stat = {
 export type GetStat = {
   success: boolean;
   data: Stat[];
+  pagination: {
+    count: string;
+    total: string;
+  };
 };
 
 export type Liquidity = {
@@ -74,4 +82,8 @@ export type Liquidity = {
 export type GetLiquidityByAccount = {
   success: boolean;
   data: Liquidity[];
+  pagination: {
+    count: string;
+    total: string;
+  };
 };

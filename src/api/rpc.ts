@@ -10,6 +10,7 @@ import {
   GetPoolsPriceParams,
   GetPoolsTransactionsParams,
   GetActionsParams,
+  GetNewsPostsParams,
 } from "../interfaces";
 import {
   GetPools,
@@ -23,6 +24,7 @@ import {
   GetPoolsPriceChart,
   GetPoolsTransactionsChart,
   GetActions,
+  GetPosts,
 } from "../types";
 
 import { parseQueryParams } from "../utils";
@@ -125,5 +127,9 @@ export class RpcApi {
 
   async getActions(params?: GetActionsParams) {
     return await this.get<GetActions>("/analytics/v1/actions", params);
+  }
+
+  async getNews(params?: GetNewsPostsParams) {
+    return await this.get<GetPosts>("/news/v1/posts", params);
   }
 }

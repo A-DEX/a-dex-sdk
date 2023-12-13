@@ -20,6 +20,10 @@ export type GlobalLiquidityChart = {
 export type GetGlobalLiquidityChart = {
   success: boolean;
   data: GlobalLiquidityChart[];
+  pagination: {
+    count: string;
+    total: string;
+  };
 };
 
 export type GlobalTransactionsChart = {
@@ -34,6 +38,10 @@ export type GlobalTransactionsChart = {
 export type GetGlobalTransactionsChart = {
   success: boolean;
   data: GlobalTransactionsChart[];
+  pagination: {
+    count: string;
+    total: string;
+  };
 };
 
 export type PoolsVolumeChart = {
@@ -47,6 +55,10 @@ export type PoolsVolumeChart = {
 export type GetPoolsVolumeChart = {
   success: boolean;
   data: PoolsVolumeChart[];
+  pagination: {
+    count: string;
+    total: string;
+  };
 };
 
 export type PoolsLiquidityChart = {
@@ -73,6 +85,10 @@ export type PoolsPriceChart = {
 export type GetPoolsPriceChart = {
   success: boolean;
   data: PoolsPriceChart[];
+  pagination: {
+    count: string;
+    total: string;
+  };
 };
 
 export type PoolsTransactionsChart = {
@@ -88,6 +104,10 @@ export type PoolsTransactionsChart = {
 export type GetPoolsTransactionsChart = {
   success: boolean;
   data: PoolsTransactionsChart[];
+  pagination: {
+    count: string;
+    total: string;
+  };
 };
 
 export type TransferData = {
@@ -181,4 +201,8 @@ export type Action = {
 export type GetActions = {
   success: boolean;
   data: Action[];
+  pagination: {
+    count: string;
+    total: string;
+  };
 };

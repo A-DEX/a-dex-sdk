@@ -33,6 +33,8 @@ export interface GetActionsParams extends HistoryParams {
   name?: string;
 }
 
+export interface GetNewsPostsParams extends DefaultParams {}
+
 export interface GetPoolsVolumeParams extends HistoryParams {
   pool_sha256?: string;
 }
