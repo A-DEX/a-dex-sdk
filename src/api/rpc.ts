@@ -13,6 +13,7 @@ import {
   GetNewsPostsParams,
 } from "../interfaces";
 import {
+  GetHealth,
   GetPools,
   GetStat,
   GetLiquidityByAccount,
@@ -56,6 +57,10 @@ export class RpcApi {
       body: JSON.stringify(body),
     });
     return await response.json();
+  }
+
+  async getHealth() {
+    return await this.get<GetHealth>("/health");
   }
 
   async getPools(params?: GetPoolsParams) {

@@ -29,7 +29,7 @@ export interface GetGlobalLiquidityParams extends HistoryParams {}
 export interface GetGlobalTransactionsParams extends HistoryParams {}
 
 export interface GetActionsParams extends HistoryParams {
-  notified?: string;
+  account?: string;
   name?: string;
 }
 

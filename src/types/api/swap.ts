@@ -20,6 +20,30 @@ export type Pool = {
   updated_at: string;
 };
 
+export type GetHealth = {
+  success: boolean;
+  data: {
+    version: string;
+    postgres: {
+      status: "string";
+      readers: [
+        {
+          block_num: "string";
+        }
+      ];
+    };
+    redis: {
+      status: "string";
+    };
+    chain: {
+      status: "string";
+      head_block: 0;
+      head_time: 0;
+    };
+    query_time: 0;
+  };
+};
+
 export type GetPools = {
   success: boolean;
   data: Pool[];

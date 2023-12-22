@@ -7,6 +7,11 @@ import { RpcApi } from "../../src/api";
 describe("Rpc Api Tests", () => {
   const api = new RpcApi("https://jungle4.a-dex.io/api", fetch);
 
+  it("Get Health Test", async () => {
+    const res = await api.getHealth();
+    expect(res).to.be.a("object");
+  }).timeout(2000);
+
   it("Get Pools Test", async () => {
     const res = await api.getPools();
     expect(res).to.be.a("object");
@@ -64,6 +69,11 @@ describe("Rpc Api Tests", () => {
 
   it("Get Actions Test", async () => {
     const res = await api.getActions();
+    expect(res).to.be.a("object");
+  }).timeout(20000);
+
+  it("Get News Test", async () => {
+    const res = await api.getNews();
     expect(res).to.be.a("object");
   }).timeout(20000);
 });
