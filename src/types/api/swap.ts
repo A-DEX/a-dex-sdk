@@ -1,3 +1,27 @@
+export type GetHealth = {
+  success: boolean;
+  data: {
+    version: string;
+    postgres: {
+      status: string;
+      readers: [
+        {
+          block_num: string;
+        }
+      ];
+    };
+    redis: {
+      status: string;
+    };
+    chain: {
+      status: string;
+      head_block: number;
+      head_time: number;
+    };
+  };
+  query_time: number;
+};
+
 export type Pool = {
   id: string;
   code: string;
@@ -18,30 +42,6 @@ export type Pool = {
   platform_fee_amount: string;
   created_at: string;
   updated_at: string;
-};
-
-export type GetHealth = {
-  success: boolean;
-  data: {
-    version: string;
-    postgres: {
-      status: "string";
-      readers: [
-        {
-          block_num: "string";
-        }
-      ];
-    };
-    redis: {
-      status: "string";
-    };
-    chain: {
-      status: "string";
-      head_block: 0;
-      head_time: 0;
-    };
-    query_time: 0;
-  };
 };
 
 export type GetPools = {
