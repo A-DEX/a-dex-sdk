@@ -53,6 +53,22 @@ export type GetPools = {
   };
 };
 
+export type Account = {
+  account_name: string;
+  balance_precision: number;
+  balance_symbol_code: string;
+  balance_amount: string;
+};
+
+export type GetAccounts = {
+  success: boolean;
+  data: Account[];
+  pagination: {
+    count: string;
+    total: string;
+  };
+};
+
 export type Stat = {
   supply_precision: number;
   supply_symbol_code: string;
@@ -63,9 +79,34 @@ export type Stat = {
   issuer: string;
 };
 
-export type GetStat = {
+export type GetStats = {
   success: boolean;
   data: Stat[];
+  pagination: {
+    count: string;
+    total: string;
+  };
+};
+
+export type Deposit = {
+  pool_id: string;
+  pool_sha256: string;
+  owner: string;
+  base_token_precision: number;
+  base_token_symbol_code: string;
+  base_token_amount: string;
+  base_token_contract: string;
+  base_token_sha256: string;
+  quote_token_precision: number;
+  quote_token_symbol_code: string;
+  quote_token_amount: string;
+  quote_token_contract: string;
+  quote_token_sha256: string;
+};
+
+export type GetDeposits = {
+  success: boolean;
+  data: Deposit[];
   pagination: {
     count: string;
     total: string;

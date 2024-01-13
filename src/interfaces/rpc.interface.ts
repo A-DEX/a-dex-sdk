@@ -16,8 +16,24 @@ export interface GetPoolsParams extends DefaultParams {
   token_sha256?: string;
 }
 
+export interface GetAccountsParams extends DefaultParams {
+  account?: string;
+  code?: string;
+}
+
 export interface GetStatsParams extends DefaultParams {
   code?: string;
+}
+
+export interface GetDepositsParams extends DefaultParams {
+  id?: number;
+  pool_sha256?: string;
+  account?: string;
+}
+
+export interface GetActionsParams extends HistoryParams {
+  account?: string;
+  name?: string;
 }
 
 export interface GetLiquidityByAccountParams extends DefaultParams {}
@@ -27,11 +43,6 @@ export interface GetGlobalVolumeParams extends HistoryParams {}
 export interface GetGlobalLiquidityParams extends HistoryParams {}
 
 export interface GetGlobalTransactionsParams extends HistoryParams {}
-
-export interface GetActionsParams extends HistoryParams {
-  account?: string;
-  name?: string;
-}
 
 export interface GetNewsPostsParams extends DefaultParams {}
 
