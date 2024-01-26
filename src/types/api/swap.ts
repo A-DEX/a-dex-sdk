@@ -30,10 +30,12 @@ export type Pool = {
   base_token_symbol_code: string;
   base_token_amount: string;
   base_token_contract: string;
+  base_token_sha256: string;
   quote_token_precision: number;
   quote_token_symbol_code: string;
   quote_token_amount: string;
   quote_token_contract: string;
+  quote_token_sha256: string;
   pool_fee_precision: number;
   pool_fee_symbol_code: string;
   pool_fee_amount: string;
