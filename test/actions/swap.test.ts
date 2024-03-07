@@ -5,7 +5,7 @@ import { Name, Sym, ExtendedSymbol } from "eos-common";
 
 // tslint:disable-next-line:no-var-requires
 
-describe("Action Generator Tests", () => {
+describe("Swap Action Generator Tests", () => {
   const auth: EosioAuthorizationObject[] = [
     {
       actor: "tester",

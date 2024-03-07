@@ -11,7 +11,7 @@ import { ChainApi } from "../../src/api";
 
 describe("Chain Api Tests", () => {
   const api = new ChainApi(
-    "https://telos-testnet.a-dex.xyz",
+    "https://eos.a-dex.xyz",
     "swap.dex",
     fetch
   );
@@ -28,7 +28,7 @@ describe("Chain Api Tests", () => {
   it("Get Currency Balance Test", async () => {
     const res = await api.getCurrencyBalance({
       code: "swap.adex",
-      account: "testerjungl3",
+      account: "avm.gm",
       symbol: "LPA",
     });
     const json = await res.json();

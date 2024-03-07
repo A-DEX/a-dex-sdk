@@ -5,7 +5,7 @@ import { RpcApi } from "../../src/api";
 // tslint:disable-next-line:no-var-requires
 
 describe("Rpc Api Tests", () => {
-  const api = new RpcApi("https://jungle4.a-dex.io/api", fetch);
+  const api = new RpcApi("https://a-dex.io/api", fetch);
 
   it("Get Health Test", async () => {
     const res = await api.getHealth();
@@ -23,7 +23,7 @@ describe("Rpc Api Tests", () => {
   }).timeout(20000);
 
   it("Get Liquidity By Account Test", async () => {
-    const res = await api.getLiquidityByAccount("testerjungl3");
+    const res = await api.getLiquidityByAccount("avm.gm");
     expect(res).to.be.a("object");
   }).timeout(20000);
 

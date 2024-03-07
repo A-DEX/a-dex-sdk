@@ -7,7 +7,7 @@ import { ExtendedAsset, Name, Sym, Asset, ExtendedSymbol } from "eos-common";
 
 // tslint:disable-next-line:no-var-requires
 
-describe("Transaction Generator Tests", () => {
+describe("Swap Transaction Generator Tests", () => {
   const auth: EosioAuthorizationObject[] = [
     {
       actor: "tester",
