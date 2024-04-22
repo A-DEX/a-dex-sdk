@@ -1,4 +1,4 @@
-import { asset, extended_asset, Asset, ExtendedAsset } from "eos-common";
+import { Asset, ExtendedAsset } from "eos-common";
 
 export function countPrice(baseToken: Asset, quoteToken: Asset): Asset;
 export function countPrice(
@@ -11,7 +11,8 @@ export function countPrice(baseToken: unknown, quoteToken: unknown): unknown {
     const precisionDelta =
       quoteToken.symbol.precision() - baseToken.symbol.precision();
     const y = quoteToken.symbol.precision() - precisionDelta;
-    return Asset.times(quoteToken, 10 ** y).div(baseToken.amount);
+    const price = quoteToken.amount.toJSNumber() * 10 ** y / baseToken.amount.toJSNumber();
+    return new Asset(price, quoteToken.symbol);
   } else if (
     baseToken instanceof ExtendedAsset &&
     quoteToken instanceof ExtendedAsset
@@ -20,9 +21,8 @@ export function countPrice(baseToken: unknown, quoteToken: unknown): unknown {
       quoteToken.quantity.symbol.precision() -
       baseToken.quantity.symbol.precision();
     const y = quoteToken.quantity.symbol.precision() - precisionDelta;
-    return ExtendedAsset.times(quoteToken, 10 ** y).div(
-      baseToken.quantity.amount
-    );
+    const price = quoteToken.quantity.amount.toJSNumber() * 10 ** y / baseToken.quantity.amount.toJSNumber();
+    return new ExtendedAsset(new Asset(price, quoteToken.get_extended_symbol().get_symbol()), quoteToken.contract);
   } else {
     throw new Error("Failed countPrice");
   }

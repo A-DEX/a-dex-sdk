@@ -59,6 +59,20 @@ describe("Math Utils Tests", () => {
     expect(pbtcPrice.to_string()).to.deep.equal("30003.0003 USDT");
   }).timeout(2000);
 
+  it("Count WAX-WUF Price Test", async () => {
+    const waxPrice = countPrice(
+      new Asset("42.45002922 WAX"),
+      new Asset("10830824.3513 WUF")
+    );
+    expect(waxPrice.to_string()).to.deep.equal("255142.9186 WUF");
+
+    const wufPrice = countPrice(
+      new Asset("10830824.3513 WUF"),
+      new Asset("42.45002922 WAX")
+    );
+    expect(wufPrice.to_string()).to.deep.equal("0.00000392 WAX");
+  }).timeout(2000);
+
   it("Count EOS-USDT Total Test", async () => {
     const total = countTotal(new Asset("1.0000 EOS"), new Asset("4.0000 USDT"));
     expect(total.toString()).to.deep.equal("4.0000 USDT");
