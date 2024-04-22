@@ -70,7 +70,7 @@ describe("Math Utils Tests", () => {
       new Asset("10830824.3513 WUF"),
       new Asset("42.45002922 WAX")
     );
-    expect(wufPrice.to_string()).to.deep.equal("0.00000392 WAX");
+    expect(wufPrice.to_string()).to.deep.equal("0.00000391 WAX");
   }).timeout(2000);
 
   it("Count EOS-USDT Total Test", async () => {

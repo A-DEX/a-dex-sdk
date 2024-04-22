@@ -1,4 +1,5 @@
 import { Asset, ExtendedAsset } from "eos-common";
+import bigInt from "big-integer";
 
 export function countPrice(baseToken: Asset, quoteToken: Asset): Asset;
 export function countPrice(
@@ -11,7 +12,9 @@ export function countPrice(baseToken: unknown, quoteToken: unknown): unknown {
     const precisionDelta =
       quoteToken.symbol.precision() - baseToken.symbol.precision();
     const y = quoteToken.symbol.precision() - precisionDelta;
-    const price = quoteToken.amount.toJSNumber() * 10 ** y / baseToken.amount.toJSNumber();
+    const price = bigInt(quoteToken.amount)
+      .times(10 ** y)
+      .divide(baseToken.amount);
     return new Asset(price, quoteToken.symbol);
   } else if (
     baseToken instanceof ExtendedAsset &&
@@ -21,8 +24,13 @@ export function countPrice(baseToken: unknown, quoteToken: unknown): unknown {
       quoteToken.quantity.symbol.precision() -
       baseToken.quantity.symbol.precision();
     const y = quoteToken.quantity.symbol.precision() - precisionDelta;
-    const price = quoteToken.quantity.amount.toJSNumber() * 10 ** y / baseToken.quantity.amount.toJSNumber();
-    return new ExtendedAsset(new Asset(price, quoteToken.get_extended_symbol().get_symbol()), quoteToken.contract);
+    const price = bigInt(quoteToken.quantity.amount)
+      .times(10 ** y)
+      .divide(baseToken.quantity.amount);
+    return new ExtendedAsset(
+      new Asset(price, quoteToken.get_extended_symbol().get_symbol()),
+      quoteToken.contract
+    );
   } else {
     throw new Error("Failed countPrice");
   }
@@ -38,7 +46,10 @@ export function countTotal(amount: unknown, price: unknown): unknown {
   if (amount instanceof Asset && price instanceof Asset) {
     const precisionDelta = price.symbol.precision() - amount.symbol.precision();
     const y = price.symbol.precision() - precisionDelta;
-    return Asset.times(price, amount.amount).div(10 ** y);
+    const total = bigInt(price.amount)
+      .times(amount.amount)
+      .divide(10 ** y);
+    return new Asset(total, price.symbol);
   } else if (
     amount instanceof ExtendedAsset &&
     price instanceof ExtendedAsset
@@ -48,7 +59,13 @@ export function countTotal(amount: unknown, price: unknown): unknown {
       amount.get_extended_symbol().get_symbol().precision();
     const y =
       price.get_extended_symbol().get_symbol().precision() - precisionDelta;
-    return ExtendedAsset.times(price, amount.quantity.amount).div(10 ** y);
+    const total = bigInt(price.quantity.amount)
+      .times(amount.quantity.amount)
+      .divide(10 ** y);
+    return new ExtendedAsset(
+      new Asset(total, price.get_extended_symbol().get_symbol()),
+      price.contract
+    );
   } else {
     throw new Error("Failed countTotal");
   }
