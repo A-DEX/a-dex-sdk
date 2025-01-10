@@ -1,50 +1,97 @@
-export interface DefaultParams {
+export interface GetPoolsParams {
   limit?: string;
   offset?: string;
   sort?: string;
-}
-
-export interface HistoryParams extends DefaultParams {
-  before?: string;
-  after?: string;
-}
-
-export interface GetPoolsParams extends DefaultParams {
   id?: number;
   code?: string;
   pool_sha256?: string;
   token_sha256?: string;
 }
 
-export interface GetStatsParams extends DefaultParams {
+export interface GetAccountsParams {
+  limit?: string;
+  offset?: string;
+  sort?: string;
+  account?: string;
   code?: string;
 }
 
-export interface GetLiquidityByAccountParams extends DefaultParams {}
+export interface GetStatsParams {
+  limit?: string;
+  offset?: string;
+  sort?: string;
+  code?: string;
+}
 
-export interface GetGlobalVolumeParams extends HistoryParams {}
+export interface GetDepositsParams {
+  limit?: string;
+  offset?: string;
+  sort?: string;
+  id?: number;
+  pool_sha256?: string;
+  account?: string;
+}
 
-export interface GetGlobalLiquidityParams extends HistoryParams {}
-
-export interface GetGlobalTransactionsParams extends HistoryParams {}
-
-export interface GetActionsParams extends HistoryParams {
-  notified?: string;
+export interface GetActionsParams {
+  limit?: string;
+  offset?: string;
+  sort?: string;
+  before?: string;
+  after?: string;
+  account?: string;
   name?: string;
 }
 
-export interface GetPoolsVolumeParams extends HistoryParams {
+export interface GetLiquidityByAccountParams {
+  limit?: string;
+  offset?: string;
+  sort?: string;
+  id?: number;
+  code?: string;
   pool_sha256?: string;
 }
 
-export interface GetPoolsLiquidityParams extends HistoryParams {
+export interface GetGlobalVolumeParams {
+  before?: string;
+  after?: string;
+}
+
+export interface GetGlobalLiquidityParams {
+  before?: string;
+  after?: string;
+}
+
+export interface GetGlobalTransactionsParams {
+  before?: string;
+  after?: string;
+}
+
+export interface GetNewsPostsParams {
+  limit?: string;
+  offset?: string;
+  sort?: string;
+}
+
+export interface GetPoolsVolumeParams {
+  before?: string;
+  after?: string;
   pool_sha256?: string;
 }
 
-export interface GetPoolsPriceParams extends HistoryParams {
+export interface GetPoolsLiquidityParams {
+  before?: string;
+  after?: string;
   pool_sha256?: string;
 }
 
-export interface GetPoolsTransactionsParams extends HistoryParams {
+export interface GetPoolsPriceParams {
+  before?: string;
+  after?: string;
+  pool_sha256?: string;
+}
+
+export interface GetPoolsTransactionsParams {
+  before?: string;
+  after?: string;
   pool_sha256?: string;
 }

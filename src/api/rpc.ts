@@ -1,6 +1,8 @@
 import {
   GetPoolsParams,
+  GetAccountsParams,
   GetStatsParams,
+  GetDepositsParams,
   GetLiquidityByAccountParams,
   GetGlobalVolumeParams,
   GetGlobalLiquidityParams,
@@ -10,10 +12,14 @@ import {
   GetPoolsPriceParams,
   GetPoolsTransactionsParams,
   GetActionsParams,
+  GetNewsPostsParams,
 } from "../interfaces";
 import {
+  GetHealth,
   GetPools,
-  GetStat,
+  GetAccounts,
+  GetStats,
+  GetDeposits,
   GetLiquidityByAccount,
   GetGlobalVolumeChart,
   GetGlobalLiquidityChart,
@@ -23,6 +29,7 @@ import {
   GetPoolsPriceChart,
   GetPoolsTransactionsChart,
   GetActions,
+  GetPosts,
 } from "../types";
 
 import { parseQueryParams } from "../utils";
@@ -56,12 +63,24 @@ export class RpcApi {
     return await response.json();
   }
 
+  async getHealth() {
+    return await this.get<GetHealth>("/health");
+  }
+
   async getPools(params?: GetPoolsParams) {
     return await this.get<GetPools>("/swap/v1/pools", params);
   }
 
+  async getAccounts(params?: GetAccountsParams) {
+    return await this.get<GetAccounts>("/swap/v1/accounts", params);
+  }
+  
   async getStats(params?: GetStatsParams) {
-    return await this.get<GetStat>("/swap/v1/stats", params);
+    return await this.get<GetStats>("/swap/v1/stats", params);
+  }
+
+  async getDeposits(params?: GetDepositsParams) {
+    return await this.get<GetDeposits>("/swap/v1/deposits", params);
   }
 
   async getLiquidityByAccount(
@@ -125,5 +144,9 @@ export class RpcApi {
 
   async getActions(params?: GetActionsParams) {
     return await this.get<GetActions>("/analytics/v1/actions", params);
+  }
+
+  async getNews(params?: GetNewsPostsParams) {
+    return await this.get<GetPosts>("/news/v1/posts", params);
   }
 }

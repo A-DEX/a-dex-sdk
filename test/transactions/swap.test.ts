@@ -7,7 +7,7 @@ import { ExtendedAsset, Name, Sym, Asset, ExtendedSymbol } from "eos-common";
 
 // tslint:disable-next-line:no-var-requires
 
-describe("Transaction Generator Tests", () => {
+describe("Swap Transaction Generator Tests", () => {
   const auth: EosioAuthorizationObject[] = [
     {
       actor: "tester",
@@ -28,6 +28,16 @@ describe("Transaction Generator Tests", () => {
     expect(trx).to.deep.equal({
       actions: [
         {
+          account: "swap.adex",
+          name: "opendeposit",
+          authorization: [{ actor: "tester", permission: "active" }],
+          data: {
+            owner: "tester",
+            pool_id: "0",
+            ram_payer: "tester",
+          },
+        },
+        {
           account: "eosio.token",
           name: "transfer",
           authorization: [{ actor: "tester", permission: "active" }],
@@ -47,6 +57,15 @@ describe("Transaction Generator Tests", () => {
             to: "swap.adex",
             quantity: "4.0000 USDT",
             memo: "deposit:0",
+          },
+        },
+        {
+          account: "swap.adex",
+          name: "deposit",
+          authorization: [{ actor: "tester", permission: "active" }],
+          data: {
+            owner: "tester",
+            pool_id: "0",
           },
         },
       ],

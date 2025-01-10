@@ -86,28 +86,43 @@ export function countRemoveLiquidity(
   liquiditySupply: Asset
 ): unknown {
   if (baseTokenReserve instanceof Asset && quoteTokenReserve instanceof Asset) {
-    const baseAmount = Asset.times(
-      baseTokenReserve,
-      liquidityAmount.amount
-    ).div(liquiditySupply.amount);
-    const quoteAmount = Asset.times(
-      quoteTokenReserve,
-      liquidityAmount.amount
-    ).div(liquiditySupply.amount);
-    return [baseAmount, quoteAmount];
+    const baseAmount = bigInt(baseTokenReserve.amount)
+      .times(liquidityAmount.amount)
+      .divide(liquiditySupply.amount);
+    const quoteAmount = bigInt(quoteTokenReserve.amount)
+      .times(liquidityAmount.amount)
+      .divide(liquiditySupply.amount);
+    return [
+      new Asset(baseAmount, baseTokenReserve.symbol),
+      new Asset(quoteAmount, quoteTokenReserve.symbol),
+    ];
   } else if (
     baseTokenReserve instanceof ExtendedAsset &&
     quoteTokenReserve instanceof ExtendedAsset
   ) {
-    const baseAmount = ExtendedAsset.times(
-      baseTokenReserve,
-      liquidityAmount.amount
-    ).div(liquiditySupply.amount);
-    const quoteAmount = ExtendedAsset.times(
-      quoteTokenReserve,
-      liquidityAmount.amount
-    ).div(liquiditySupply.amount);
-    return [baseAmount, quoteAmount];
+    const baseAmount = bigInt(baseTokenReserve.quantity.amount)
+      .times(liquidityAmount.amount)
+      .divide(liquiditySupply.amount);
+    const quoteAmount = bigInt(quoteTokenReserve.quantity.amount)
+      .times(liquidityAmount.amount)
+      .divide(liquiditySupply.amount);
+    return [
+      new ExtendedAsset(
+        new Asset(
+          baseAmount,
+          baseTokenReserve.get_extended_symbol().get_symbol()
+        ),
+        baseTokenReserve.contract
+      ),
+      new ExtendedAsset(
+        new Asset(
+          quoteAmount,
+          quoteTokenReserve.get_extended_symbol().get_symbol()
+        ),
+        quoteTokenReserve.contract
+      ),
+      ,
+    ];
   } else {
     throw new Error("Failed countRemoveLiquidity");
   }

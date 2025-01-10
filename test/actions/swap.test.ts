@@ -5,7 +5,7 @@ import { Name, Sym, ExtendedSymbol } from "eos-common";
 
 // tslint:disable-next-line:no-var-requires
 
-describe("Action Generator Tests", () => {
+describe("Swap Action Generator Tests", () => {
   const auth: EosioAuthorizationObject[] = [
     {
       actor: "tester",
@@ -170,6 +170,44 @@ describe("Action Generator Tests", () => {
         data: {
           base_token: '{"sym":"4,EOS","contract":"eosio.token"}',
           quote_token: '{"sym":"4,USDT","contract":"tethertether"}',
+        },
+      },
+    ]);
+  }).timeout(2000);
+
+  it("Deposit Action Object", async () => {
+    const act = await actionsGen.deposit(
+      auth,
+      "tester",
+      "1"
+    );
+    expect(act).to.deep.equal([
+      {
+        account: "swap.adex",
+        name: "deposit",
+        authorization: [{ actor: "tester", permission: "active" }],
+        data: {
+          owner: 'tester',
+          pool_id: '1',
+        },
+      },
+    ]);
+  }).timeout(2000);
+
+  it("Refund Action Object", async () => {
+    const act = await actionsGen.refund(
+      auth,
+      "tester",
+      "1"
+    );
+    expect(act).to.deep.equal([
+      {
+        account: "swap.adex",
+        name: "refund",
+        authorization: [{ actor: "tester", permission: "active" }],
+        data: {
+          owner: 'tester',
+          pool_id: '1',
         },
       },
     ]);

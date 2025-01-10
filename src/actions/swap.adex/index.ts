@@ -116,6 +116,52 @@ export class SwapActionGenerator {
     });
   }
 
+  async openDeposit(
+    authorization: AdexSwap.AuthorizationObject[],
+    owner: string,
+    pool_id: string,
+    ram_payer: string
+  ): Promise<AdexSwap.ActionObject[]> {
+    return this._pack(this.contract, authorization, "opendeposit", {
+      owner,
+      pool_id,
+      ram_payer
+    });
+  }
+
+  async closeDeposit(
+    authorization: AdexSwap.AuthorizationObject[],
+    owner: string,
+    pool_id: string,
+  ): Promise<AdexSwap.ActionObject[]> {
+    return this._pack(this.contract, authorization, "closedeposit", {
+      owner,
+      pool_id
+    });
+  }
+
+  async deposit(
+    authorization: AdexSwap.AuthorizationObject[],
+    owner: string,
+    pool_id: string,
+  ): Promise<AdexSwap.ActionObject[]> {
+    return this._pack(this.contract, authorization, "deposit", {
+      owner,
+      pool_id
+    });
+  }
+
+  async refund(
+    authorization: AdexSwap.AuthorizationObject[],
+    owner: string,
+    pool_id: string,
+  ): Promise<AdexSwap.ActionObject[]> {
+    return this._pack(this.contract, authorization, "refund", {
+      owner,
+      pool_id
+    });
+  }
+
   protected _pack(
     account: string,
     authorization: AdexSwap.AuthorizationObject[],
@@ -130,6 +176,10 @@ export class SwapActionGenerator {
       | AdexSwap.TransferActionData
       | AdexSwap.CreatePoolActionData
       | AdexSwap.RemovePoolActionData
+      | AdexSwap.OpenDepositActionData
+      | AdexSwap.CloseDepositActionData
+      | AdexSwap.DepositActionData
+      | AdexSwap.RefundActionData
   ): AdexSwap.ActionObject[] {
     return [{ account, name, authorization, data }];
   }
