@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { Asset, ExtendedAsset, Name } from "eos-common";
+import { asset, Asset, ExtendedAsset, Name } from "eos-common";
 import { countChange, countPrice, countTotal } from "../../src/utils";
 
 describe("Math Utils Tests", () => {
@@ -71,6 +71,20 @@ describe("Math Utils Tests", () => {
       new Asset("42.45002922 WAX")
     );
     expect(wufPrice.to_string()).to.deep.equal("0.00000391 WAX");
+  }).timeout(2000);
+
+   it("Count WAX-NEFTY Price Test", async () => {
+    const waxPrice = countPrice(
+      new Asset("0.00059709 WAX"),
+      new Asset("0.00724108 NEFTY")
+    );
+    expect(waxPrice.to_string()).to.deep.equal("12.12728399 NEFTY");
+
+    const neftyPrice = countPrice(
+      new Asset("0.00724108 NEFTY"),
+      new Asset("0.00059709 WAX")
+    );
+    expect(neftyPrice.to_string()).to.deep.equal("0.08245869 WAX");
   }).timeout(2000);
 
   it("Count EOS-USDT Total Test", async () => {
@@ -164,5 +178,16 @@ describe("Math Utils Tests", () => {
       new ExtendedAsset(new Asset("0.5000 EOS"), new Name("eosio.token"))
     );
     expect(change).to.deep.equal("-50.00");
+  }).timeout(2000);
+
+  it("Count UINT64 scope to Name and reveser", async () => {
+    const poolId = new Name("............a");
+    expect(poolId.raw().toString()).to.deep.equal("6");
+  }).timeout(2000);
+
+  it("Check greater or equal", async () => {
+    const a = asset("0.00000001 WAX");
+    const b = asset("2000000.00000000 WAX");
+    expect(a.isGreaterThanOrEqual(b)).to.deep.equal(false);
   }).timeout(2000);
 });
